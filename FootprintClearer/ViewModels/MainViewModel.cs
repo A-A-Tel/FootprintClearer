@@ -1,8 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using FootprintClearer.ViewModels.Start;
 
 namespace FootprintClearer.ViewModels;
 
-public partial class MainViewModel : ViewModelBase
+public class MainViewModel : ViewModelBase
 {
-    [ObservableProperty] private string _greeting = "Welcome to Avalonia!";
+    public PageViewModelBase Page { get; set; } = new StartPageViewModel();
 }
