@@ -24,19 +24,23 @@ public class App : Application
         
         collection.AddSingleton<MainViewModel>();
         collection.AddSingleton<INavigator, Navigator>();
+
+        ServiceProvider provider = collection.BuildServiceProvider();
         
+        MainViewModel mainViewModel = provider.GetRequiredService<MainViewModel>();
+
         switch (ApplicationLifetime)
         {
             case IClassicDesktopStyleApplicationLifetime desktop:
                 desktop.MainWindow = new MainWindowView
                 {
-                    DataContext = new MainViewModel()
+                    DataContext = mainViewModel
                 };
                 break;
             case ISingleViewApplicationLifetime singleViewPlatform:
                 singleViewPlatform.MainView = new MainView
                 {
-                    DataContext = new MainViewModel()
+                    DataContext = mainViewModel
                 };
                 break;
             default:
