@@ -8,8 +8,32 @@
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
-
-    <Application.Styles>
-        <FluentTheme />
-    </Application.Styles>
+             
+    <Application>
+        <Application.Styles>
+            <FluentTheme/>
+        </Application.Styles>
+    </Application>
+             
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="Accent" Color="#FF9F0F" />
+                    
+                    <SolidColorBrush x:Key="Primary" Color="#009688" />
+                    <SolidColorBrush x:Key="LightPrimary" Color="#B1DEDA" />
+                    <SolidColorBrush x:Key="DarkPrimary" Color="#00786A" />
+                    
+                    <SolidColorBrush x:Key="Secondary" Color="#006E59" />
+                    <SolidColorBrush x:Key="DarkSecondary" Color="#004C3E" />
+                    
+                    <SolidColorBrush x:Key="Background" Color="#FFFFFF" />
+                    
+                    <SolidColorBrush x:Key="TextPrimary" Color="#000000" />
+                    <SolidColorBrush x:Key="TextSecondary" Color="#FFFFFF" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

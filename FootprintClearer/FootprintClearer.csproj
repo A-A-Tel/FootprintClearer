@@ -23,4 +23,8 @@
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
         <PackageReference Include="ReactiveUI.Avalonia" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="ViewModels\Components\" />
+    </ItemGroup>
 </Project>
