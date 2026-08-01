@@ -1,15 +1,15 @@
+using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
-using Avalonia.Data.Core.Plugins;
-using System.Linq;
 using Avalonia.Markup.Xaml;
+using FootprintClearer.Services;
 using FootprintClearer.ViewModels;
 using FootprintClearer.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FootprintClearer;
 
-public partial class App : Application
+public class App : Application
 {
     public override void Initialize()
     {
@@ -18,37 +18,35 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        ServiceCollection collection = new();
+
+        collection.AddSingleton<IPageFactory, PageFactory>();
+        
+        collection.AddSingleton<MainViewModel>();
+        collection.AddSingleton<INavigator, Navigator>();
+
+        ServiceProvider provider = collection.BuildServiceProvider();
+        
+        MainViewModel mainViewModel = provider.GetRequiredService<MainViewModel>();
+
+        switch (ApplicationLifetime)
         {
-            // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
-            // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
-            DisableAvaloniaDataAnnotationValidation();
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new MainViewModel()
-            };
-        }
-        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-        {
-            singleViewPlatform.MainView = new MainView
-            {
-                DataContext = new MainViewModel()
-            };
+            case IClassicDesktopStyleApplicationLifetime desktop:
+                desktop.MainWindow = new MainWindowView
+                {
+                    DataContext = mainViewModel
+                };
+                break;
+            case ISingleViewApplicationLifetime singleViewPlatform:
+                singleViewPlatform.MainView = new MainView
+                {
+                    DataContext = mainViewModel
+                };
+                break;
+            default:
+                throw new NotImplementedException("ApplicationLifetime not supported: " + ApplicationLifetime?.GetType());
         }
 
         base.OnFrameworkInitializationCompleted();
-    }
-
-    private void DisableAvaloniaDataAnnotationValidation()
-    {
-        // Get an array of plugins to remove
-        var dataValidationPluginsToRemove =
-            BindingPlugins.DataValidators.OfType<DataAnnotationsValidationPlugin>().ToArray();
-
-        // remove each entry found
-        foreach (var plugin in dataValidationPluginsToRemove)
-        {
-            BindingPlugins.DataValidators.Remove(plugin);
-        }
     }
 }
