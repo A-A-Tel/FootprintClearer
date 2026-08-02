@@ -7,9 +7,11 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FootprintClearer.Views.MainView"
              x:DataType="vm:MainViewModel">
-    <Grid RowDefinitions="100,*">
+    <Grid RowDefinitions="100,*" ColumnDefinitions="300,*">
+
+        <components:Header Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
         
-        <components:Header Grid.Row="0"/>
-        <ContentControl Grid.Row="1" Content="{Binding Page}"/>
+        
+        <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding Page}"/>
     </Grid>
 </UserControl>

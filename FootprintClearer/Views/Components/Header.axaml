@@ -4,7 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FootprintClearer.Views.Components.Header">
-    <StackPanel Orientation="Horizontal" Background="Red" Height="100">
-                
-    </StackPanel>
+    <Grid Background="{DynamicResource Secondary}" Height="100">
+        <TextBlock Foreground="{DynamicResource TextSecondary}" 
+                   FontFamily="{StaticResource PtSansFont}"
+                   Text="FootprintClearer"
+                   FontSize="42"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   />
+    </Grid>
 </UserControl>
