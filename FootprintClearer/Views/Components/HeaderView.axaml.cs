@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace FootprintClearer.Views.Components;
 
-public partial class Header : UserControl
+public partial class HeaderView : UserControl
 {
-    public Header()
+    public HeaderView()
     {
         InitializeComponent();
     }

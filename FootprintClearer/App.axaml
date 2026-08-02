@@ -9,9 +9,14 @@
     </Application.Styles>
              
     <Application.Resources>
-        
         <ResourceDictionary>
+            <!-- Images/Icons -->
+            <SvgImage x:Key="HamburgerIcon" Source="avares://FootprintClearer/Assets/Icons/Hamburger.svg" />
+            
+            <!-- Fonts -->
             <FontFamily x:Key="PtSansFont">avares://FootprintClearer/Assets/Fonts#Pt Sans Bold Italic</FontFamily>
+            
+            <!-- Colors -->
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="Accent" Color="#FF9F0F" />

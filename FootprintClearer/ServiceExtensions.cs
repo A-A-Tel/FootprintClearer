@@ -1,5 +1,6 @@
 using FootprintClearer.Services;
 using FootprintClearer.ViewModels;
+using FootprintClearer.ViewModels.Components;
 using FootprintClearer.ViewModels.Start;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,20 +8,24 @@ namespace FootprintClearer;
 
 public static class ServiceExtensions
 {
-    public static ServiceCollection AddCommon(this ServiceCollection collection)
+    extension(ServiceCollection collection)
     {
-        collection
-            .AddSingleton<IPageFactory, PageFactory>()
-            .AddSingleton<MainViewModel>()
-            .AddSingleton<INavigator, Navigator>();
-        return collection;
-    }
+        public ServiceCollection AddCommon()
+        {
+            collection
+                .AddSingleton<IPageFactory, PageFactory>()
+                .AddSingleton<SidebarViewModel>()
+                .AddSingleton<MainViewModel>()
+                .AddSingleton<INavigator, Navigator>();
+            return collection;
+        }
 
-    public static ServiceCollection AddViews(this ServiceCollection collection)
-    {
-        collection
-            .AddSingleton<StartPageViewModel>();
+        public ServiceCollection AddViews()
+        {
+            collection
+                .AddSingleton<StartPageViewModel>();
 
-        return collection;
+            return collection;
+        }
     }
 }
