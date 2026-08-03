@@ -15,6 +15,7 @@ public static class ServiceExtensions
             collection
                 .AddSingleton<IPageFactory, PageFactory>()
                 .AddSingleton<SidebarViewModel>()
+                .AddSingleton<HeaderViewModel>()
                 .AddSingleton<MainViewModel>()
                 .AddSingleton<INavigator, Navigator>();
             return collection;

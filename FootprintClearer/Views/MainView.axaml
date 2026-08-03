@@ -8,7 +8,7 @@
              x:Class="FootprintClearer.Views.MainView"
              x:DataType="vm:MainViewModel">
     <Grid RowDefinitions="100,*" ColumnDefinitions="300,*">
-        <components:HeaderView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <ContentControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Header}"/>
         <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding Sidebar}"/>
         
         <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding Page}"/>
