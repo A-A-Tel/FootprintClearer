@@ -8,12 +8,13 @@ public class MainViewModel : ViewModelBase
 {
     public HeaderViewModel Header { get; }
     public SidebarViewModel Sidebar { get; }
+    public PageViewModelBase Page { get; set; }
 
-    public MainViewModel(SidebarViewModel sidebar, HeaderViewModel header)
+    public MainViewModel(SidebarViewModel sidebar, HeaderViewModel header, StartPageViewModel page)
     {
         Sidebar = sidebar;
         Header = header;
+        Page = page;
     }
 
-    public PageViewModelBase Page { get; set; } = new StartPageViewModel();
 }

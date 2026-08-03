@@ -27,7 +27,6 @@ public class App : Application
             .BuildServiceProvider();
 
         MainViewModel mainViewModel = provider.GetRequiredService<MainViewModel>();
-        mainViewModel.Page = provider.GetRequiredService<StartPageViewModel>();
 
         switch (ApplicationLifetime)
         {
