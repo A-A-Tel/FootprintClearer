@@ -6,9 +6,10 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FootprintClearer.Views.MainView"
              x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
+    <Grid RowDefinitions="100,*" ColumnDefinitions="300,*">
+        <ContentControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Header}" />
+        <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding Sidebar}" />
+
+        <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding Page}" />
+    </Grid>
 </UserControl>

@@ -1,0 +1,25 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:FootprintClearer.ViewModels.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FootprintClearer.Views.Components.HeaderView"
+             x:DataType="components:HeaderViewModel">
+    <Grid ColumnDefinitions="100,*,100" Background="{DynamicResource Secondary}" Height="100">
+        <Button Command="{Binding ToggleSidebarCommand}"
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="0"
+                Margin="20,0">
+            <Image Source="{StaticResource HamburgerIcon}" />
+        </Button>
+
+        <TextBlock Grid.Column="1" Foreground="{DynamicResource TextSecondary}"
+                   FontFamily="{StaticResource PtSansFont}"
+                   Text="FootprintClearer"
+                   FontSize="42"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+    </Grid>
+</UserControl>

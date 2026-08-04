@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using FootprintClearer.Services;
 using FootprintClearer.ViewModels;
+using FootprintClearer.ViewModels.Start;
 using FootprintClearer.Views;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,14 +21,16 @@ public class App : Application
     {
         ServiceCollection collection = new();
 
-        collection.AddSingleton<IPageFactory, PageFactory>();
-        
-        collection.AddSingleton<MainViewModel>();
-        collection.AddSingleton<INavigator, Navigator>();
+        ServiceProvider provider = collection
+            .AddCommon()
+            .AddComponents()
+            .AddPages()
+            .BuildServiceProvider();
 
-        ServiceProvider provider = collection.BuildServiceProvider();
-        
         MainViewModel mainViewModel = provider.GetRequiredService<MainViewModel>();
+        INavigator navigator = provider.GetRequiredService<INavigator>();
+
+        navigator.NavigateTo<StartPageViewModel>();
 
         switch (ApplicationLifetime)
         {
@@ -44,7 +47,8 @@ public class App : Application
                 };
                 break;
             default:
-                throw new NotImplementedException("ApplicationLifetime not supported: " + ApplicationLifetime?.GetType());
+                throw new NotImplementedException(
+                    "ApplicationLifetime not supported: " + ApplicationLifetime?.GetType());
         }
 
         base.OnFrameworkInitializationCompleted();
