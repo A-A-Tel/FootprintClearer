@@ -27,6 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Assets\Fonts\Brands\" />
       <Folder Include="Assets\Icons\Brands\" />
     </ItemGroup>
 </Project>

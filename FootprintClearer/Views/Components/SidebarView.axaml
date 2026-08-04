@@ -6,5 +6,5 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FootprintClearer.Views.Components.SidebarView"
              x:DataType="components:SidebarViewModel">
-    <Grid Background="{DynamicResource LightPrimary}" IsVisible="{Binding IsVisible}" />
+    <Grid Background="{DynamicResource LightPrimaryBrush}" IsVisible="{Binding IsVisible}" />
 </UserControl>
