@@ -17,7 +17,7 @@ public class PageFactory : IPageFactory
     {
         _services = services;
     }
-    
+
     public T Get<T>() where T : PageViewModelBase
     {
         try
@@ -26,7 +26,8 @@ public class PageFactory : IPageFactory
         }
         catch (InvalidOperationException e)
         {
-            throw new TypeLoadException("No service of type \"" + typeof(T) + "\", has it been added to the collection?", e);
+            throw new TypeLoadException(
+                "No service of type \"" + typeof(T) + "\", has it been added to the collection?", e);
         }
     }
 }

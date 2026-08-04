@@ -10,7 +10,7 @@ namespace FootprintClearer.Android;
 [Application]
 public class AndroidApp : AvaloniaAndroidApplication<App>
 {
-    public AndroidApp(IntPtr javaReference, JniHandleOwnership transfer) 
+    public AndroidApp(IntPtr javaReference, JniHandleOwnership transfer)
         : base(javaReference, transfer)
     {
     }

@@ -10,8 +10,8 @@ public interface INavigator
 
 public class Navigator : INavigator
 {
-    private readonly IPageFactory _pageFactory;
     private readonly MainViewModel _mainViewModel;
+    private readonly IPageFactory _pageFactory;
 
     public Navigator(IPageFactory pageFactory, MainViewModel mainViewModel)
     {
