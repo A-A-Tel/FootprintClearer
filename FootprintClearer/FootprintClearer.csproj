@@ -25,4 +25,8 @@
         <PackageReference Include="Svg.Controls.Avalonia"/>
         <PackageReference Include="System.Reactive"/>
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Assets\Icons\Brands\" />
+    </ItemGroup>
 </Project>

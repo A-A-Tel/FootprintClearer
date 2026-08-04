@@ -14,7 +14,6 @@ public static class ServiceExtensions
         {
             collection
                 .AddSingleton<IPageFactory, PageFactory>()
-                .AddSingleton<MainViewModel>()
                 .AddSingleton<INavigator, Navigator>();
             return collection;
         }
@@ -22,12 +21,13 @@ public static class ServiceExtensions
         public ServiceCollection AddComponents()
         {
             collection
+                .AddSingleton<MainViewModel>()
                 .AddSingleton<SidebarViewModel>()
                 .AddSingleton<HeaderViewModel>();
             return collection;
         }
 
-        public ServiceCollection AddViewModels()
+        public ServiceCollection AddPages()
         {
             collection
                 .AddSingleton<StartPageViewModel>();

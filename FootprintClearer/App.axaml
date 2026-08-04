@@ -15,6 +15,7 @@
 
             <!-- Fonts -->
             <FontFamily x:Key="PtSansFont">avares://FootprintClearer/Assets/Fonts#Pt Sans Bold Italic</FontFamily>
+            <FontFamily x:Key="OpenSansFont">avares://FootprintClearer/Assets/Fonts#Open Sans Regular</FontFamily>
 
             <!-- Colors -->
             <ResourceDictionary.ThemeDictionaries>
