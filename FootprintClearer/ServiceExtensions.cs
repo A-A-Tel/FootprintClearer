@@ -1,6 +1,7 @@
 using FootprintClearer.Services;
 using FootprintClearer.ViewModels;
 using FootprintClearer.ViewModels.Components;
+using FootprintClearer.ViewModels.Discord;
 using FootprintClearer.ViewModels.Start;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -30,7 +31,8 @@ public static class ServiceExtensions
         public ServiceCollection AddPages()
         {
             collection
-                .AddSingleton<StartPageViewModel>();
+                .AddSingleton<StartPageViewModel>()
+                .AddSingleton<DiscordLoginViewModel>();
             return collection;
         }
     }
