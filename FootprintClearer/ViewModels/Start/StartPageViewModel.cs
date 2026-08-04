@@ -8,6 +8,6 @@ public class StartPageViewModel : PageViewModelBase
 {
     public override Task Load()
     {
-        throw new NotImplementedException();
+        return Task.CompletedTask;
     }
 }

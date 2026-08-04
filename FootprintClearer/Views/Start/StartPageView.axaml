@@ -4,4 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FootprintClearer.Views.Start.StartPageView">
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="{StaticResource OpenSansFont}"
+               FontSize="44" TextWrapping="Wrap" Width="880" Margin="0,200,0,0" TextAlignment="Center"
+               Text="You haven't selected a service yet. You can do so by opening the sidebar and picking one from the list." />
 </UserControl>

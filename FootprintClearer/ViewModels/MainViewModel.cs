@@ -1,4 +1,5 @@
 ﻿using FootprintClearer.ViewModels.Components;
+using ReactiveUI;
 
 namespace FootprintClearer.ViewModels;
 
@@ -12,5 +13,10 @@ public class MainViewModel : ViewModelBase
 
     public HeaderViewModel Header { get; }
     public SidebarViewModel Sidebar { get; }
-    public PageViewModelBase? Page { get; set; }
+
+    public PageViewModelBase? Page
+    {
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
+    }
 }
