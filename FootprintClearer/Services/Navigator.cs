@@ -17,7 +17,7 @@ public class Navigator : ReactiveObject, INavigator
     
     public PageViewModelBase CurrentPage
     {
-        get => field;
+        get;
         private set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
@@ -31,6 +31,7 @@ public class Navigator : ReactiveObject, INavigator
         where T : PageViewModelBase
     {
         T page = _pageFactory.Get<T>();
+        await CurrentPage.Unload();
         await page.Load();
         CurrentPage = page;
     }
