@@ -14,6 +14,7 @@ public static class ServiceExtensions
         public ServiceCollection AddCommon()
         {
             collection
+                .AddSingleton<ITextFileReader, TextFileFileReader>()
                 .AddSingleton<IPageFactory, PageFactory>()
                 .AddSingleton<INavigator, Navigator>();
             return collection;

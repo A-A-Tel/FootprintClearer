@@ -8,6 +8,11 @@
              x:DataType="discord:DiscordLoginViewModel">
     
     <Grid RowDefinitions="*,600,*" ColumnDefinitions="*,900,*">
-        <NativeWebView Grid.Row="1" Grid.Column="1" Source="https://www.discord.com/login" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Log in with Discord to continue" 
+                   FontFamily="{StaticResource OpenSansFont}" FontSize="40"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <NativeWebView Grid.Row="1" Grid.Column="1" Name="WebView" Source="https://www.discord.com/login" 
+                       NavigationStarted="NativeWebView_OnNavigationStarted"
+                       WebMessageReceived="WebView_OnWebMessageReceived"/>
     </Grid>
 </UserControl>
