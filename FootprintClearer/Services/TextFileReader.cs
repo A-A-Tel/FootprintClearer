@@ -37,7 +37,7 @@ public class TextFileFileReader : ITextFileReader
         string fullPath = Path.Combine("FootprintClearer/Assets/", path);
         Uri uri = new("avares://" + fullPath);
         
-        using Stream resource = AssetLoader.Open(new Uri("avares://FootprintClearer/Assets/Scripts/monitor.js"));
+        using Stream resource = AssetLoader.Open(uri);
         using StreamReader reader = new(resource);
         string content = reader.ReadToEnd();
 
@@ -50,7 +50,7 @@ public class TextFileFileReader : ITextFileReader
         string fullPath = Path.Combine("FootprintClearer/Assets/", path);
         Uri uri = new("avares://" + fullPath);
 
-        await using Stream resource = AssetLoader.Open(new Uri("avares://FootprintClearer/Assets/Scripts/monitor.js"));
+        await using Stream resource = AssetLoader.Open(uri);
         using StreamReader reader = new(resource);
         string content = await reader.ReadToEndAsync();
 

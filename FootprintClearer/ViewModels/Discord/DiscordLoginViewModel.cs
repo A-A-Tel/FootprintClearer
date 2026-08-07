@@ -18,9 +18,6 @@ public class DiscordLoginViewModel : PageViewModelBase
     {
         string bridgeScript = await _textFileReader.GetFileContentsAsync("Scripts", "csBridge.js");
         string monitorScript = await _textFileReader.GetFileContentsAsync("Scripts", "monitor.js");
-
-        Console.WriteLine(bridgeScript);
-        Console.WriteLine(monitorScript);
         
         await webView.InvokeScript(bridgeScript);
         await webView.InvokeScript(monitorScript);
