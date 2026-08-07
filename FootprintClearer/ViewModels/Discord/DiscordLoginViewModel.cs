@@ -17,7 +17,7 @@ public class DiscordLoginViewModel : PageViewModelBase
     public async Task HandlePageLoad(NativeWebView webView)
     {
         string bridgeScript = await _textFileReader.GetFileContentsAsync("Scripts", "csBridge.js");
-        string monitorScript = await _textFileReader.GetFileContentsAsync("Scripts", "monitor.js");
+        string monitorScript = await _textFileReader.GetFileContentsAsync("Scripts", "getDiscordToken.js");
         
         await webView.InvokeScript(bridgeScript);
         await webView.InvokeScript(monitorScript);
