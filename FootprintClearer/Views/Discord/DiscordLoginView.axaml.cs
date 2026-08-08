@@ -14,7 +14,7 @@ public partial class DiscordLoginView : UserControl
         InitializeComponent();
     }
 
-    private async void WebView_OnNavigationStarted(object? sender, WebViewNavigationStartingEventArgs webViewNavigationStartingEventArgs)
+    private async void WebView_OnNavigationStarted(object? sender, WebViewNavigationStartingEventArgs e)
     {
         await ViewModel.HandlePageLoad(WebView);
     }
