@@ -1,0 +1,20 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:discord="clr-namespace:FootprintClearer.ViewModels.Discord"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="FootprintClearer.Views.Discord.DiscordLoginView"
+             x:DataType="discord:DiscordLoginViewModel">
+    
+    <Grid RowDefinitions="*,600,*" ColumnDefinitions="*,900,*">
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Log in with Discord to continue" 
+                   FontFamily="{StaticResource OpenSansFont}" FontSize="40"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <NativeWebView Grid.Row="1" Grid.Column="1" Name="WebView" Source="https://www.discord.com/login" 
+                       NavigationStarted="WebView_OnNavigationStarted"
+                       WebMessageReceived="WebView_OnWebMessageReceived"
+                       EnvironmentRequested="WebView_OnEnvironmentRequested">
+        </NativeWebView>
+    </Grid>
+</UserControl>

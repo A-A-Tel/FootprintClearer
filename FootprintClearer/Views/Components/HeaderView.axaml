@@ -6,7 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FootprintClearer.Views.Components.HeaderView"
              x:DataType="components:HeaderViewModel">
-    <Grid ColumnDefinitions="100,*,100" Background="{DynamicResource Secondary}" Height="100">
+    <Grid ColumnDefinitions="100,*,100" Background="{DynamicResource SecondaryBrush}" Height="100">
         <Button Command="{Binding ToggleSidebarCommand}"
                 Background="Transparent"
                 BorderThickness="0"
@@ -15,7 +15,7 @@
             <Image Source="{StaticResource HamburgerIcon}" />
         </Button>
 
-        <TextBlock Grid.Column="1" Foreground="{DynamicResource TextSecondary}"
+        <TextBlock Grid.Column="1" Foreground="{DynamicResource TextSecondaryBrush}"
                    FontFamily="{StaticResource PtSansFont}"
                    Text="FootprintClearer"
                    FontSize="42"

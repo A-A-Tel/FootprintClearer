@@ -6,6 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="FootprintClearer.Views.MainWindowView"
         Icon="/Assets/avalonia-logo.ico"
-        Title="FootprintClearer">
+        Title="FootprintClearer"
+        WindowStartupLocation="CenterScreen">
     <views:MainView />
 </Window>

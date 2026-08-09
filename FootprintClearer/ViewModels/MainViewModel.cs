@@ -1,22 +1,20 @@
-﻿using FootprintClearer.ViewModels.Components;
+﻿using FootprintClearer.Services;
+using FootprintClearer.ViewModels.Components;
 using ReactiveUI;
 
 namespace FootprintClearer.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
-    public MainViewModel(SidebarViewModel sidebar, HeaderViewModel header)
-    {
-        Sidebar = sidebar;
-        Header = header;
-    }
-
     public HeaderViewModel Header { get; }
     public SidebarViewModel Sidebar { get; }
 
-    public PageViewModelBase? Page
+    public INavigator Navigator { get; }
+    
+    public MainViewModel(SidebarViewModel sidebar, HeaderViewModel header, INavigator navigator)
     {
-        get;
-        set => this.RaiseAndSetIfChanged(ref field, value);
+        Sidebar = sidebar;
+        Header = header;
+        Navigator = navigator;
     }
 }

@@ -4,5 +4,6 @@ namespace FootprintClearer.ViewModels;
 
 public abstract class PageViewModelBase : ViewModelBase
 {
-    public abstract Task Load();
+    public virtual Task Load() => Task.CompletedTask;
+    public virtual Task Unload() => Task.CompletedTask;
 }

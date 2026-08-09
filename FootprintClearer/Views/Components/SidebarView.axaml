@@ -6,5 +6,14 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="FootprintClearer.Views.Components.SidebarView"
              x:DataType="components:SidebarViewModel">
-    <Grid Background="{DynamicResource LightPrimary}" IsVisible="{Binding IsVisible}" />
+    <Grid Background="{DynamicResource LightPrimaryBrush}" IsVisible="{Binding IsVisible}">
+        <Button Background="#000000FF" Command="{Binding BrandPageCommand}" CommandParameter="Discord" HorizontalAlignment="Center">
+            <Grid ColumnDefinitions="80,*" ColumnSpacing="20" RowDefinitions="80">
+                <Border CornerRadius="999" Grid.Column="0" Background="{StaticResource DiscordBrandBrush}">
+                    <Image Width="50"  Source="{StaticResource DiscordBrandIcon}" />
+                </Border>
+                <TextBlock VerticalAlignment="Center" Grid.Column="1" FontFamily="{StaticResource DiscordBrandFont}" Foreground="{DynamicResource TextPrimaryBrush}" FontSize="32" Text="Discord"/>
+            </Grid>
+        </Button>
+    </Grid>
 </UserControl>

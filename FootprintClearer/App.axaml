@@ -16,23 +16,28 @@
             <!-- Fonts -->
             <FontFamily x:Key="PtSansFont">avares://FootprintClearer/Assets/Fonts#Pt Sans Bold Italic</FontFamily>
             <FontFamily x:Key="OpenSansFont">avares://FootprintClearer/Assets/Fonts#Open Sans Regular</FontFamily>
+            
+            <!-- Brands -->
+            <SvgImage x:Key="DiscordBrandIcon" Source="avares://FootprintClearer/Assets/Icons/Brands/Discord.svg" />
+            <SolidColorBrush x:Key="DiscordBrandBrush" Color="#5865f2"/>
+            <FontFamily x:Key="DiscordBrandFont">avares://FootprintClearer/Assets/Fonts/Brands#ABC Ginto Discord Nord Bold</FontFamily>
 
             <!-- Colors -->
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
-                    <SolidColorBrush x:Key="Accent" Color="#FF9F0F" />
+                    <SolidColorBrush x:Key="AccentBrush" Color="#FF9F0F" />
 
-                    <SolidColorBrush x:Key="Primary" Color="#009688" />
-                    <SolidColorBrush x:Key="LightPrimary" Color="#B1DEDA" />
-                    <SolidColorBrush x:Key="DarkPrimary" Color="#00786A" />
+                    <SolidColorBrush x:Key="PrimaryBrush" Color="#009688" />
+                    <SolidColorBrush x:Key="LightPrimaryBrush" Color="#B1DEDA" />
+                    <SolidColorBrush x:Key="DarkPrimaryBrush" Color="#00786A" />
 
-                    <SolidColorBrush x:Key="Secondary" Color="#006E59" />
-                    <SolidColorBrush x:Key="DarkSecondary" Color="#004C3E" />
+                    <SolidColorBrush x:Key="SecondaryBrush" Color="#006E59" />
+                    <SolidColorBrush x:Key="DarkSecondaryBrush" Color="#004C3E" />
 
-                    <SolidColorBrush x:Key="Background" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="BackgroundBrush" Color="#FFFFFF" />
 
-                    <SolidColorBrush x:Key="TextPrimary" Color="#000000" />
-                    <SolidColorBrush x:Key="TextSecondary" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="TextPrimaryBrush" Color="#000000" />
+                    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#FFFFFF" />
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
