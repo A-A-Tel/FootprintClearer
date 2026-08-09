@@ -16,7 +16,8 @@ public static class ServiceExtensions
             collection
                 .AddSingleton<ITextFileReader, TextFileFileReader>()
                 .AddSingleton<IPageFactory, PageFactory>()
-                .AddSingleton<INavigator, Navigator>();
+                .AddSingleton<INavigator, Navigator>()
+                .AddSingleton<ITokenStorage, TokenStorage>();
             return collection;
         }
 

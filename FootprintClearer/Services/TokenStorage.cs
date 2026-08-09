@@ -5,7 +5,7 @@ namespace FootprintClearer.Services;
 public interface ITokenStorage
 {
     void StoreToken(string key, string token);
-    string GetToken(string key);
+    string? GetToken(string key);
 }
 
 public class TokenStorage : ITokenStorage
@@ -14,12 +14,13 @@ public class TokenStorage : ITokenStorage
     
     public void StoreToken(string key, string token)
     {
-        _tokens[key] = token;
+        _tokens[key.ToLowerInvariant()] = token;
     }
 
-    public string GetToken(string key)
+    public string? GetToken(string key)
     {
-        return _tokens[key];
+        _tokens.TryGetValue(key.ToLowerInvariant(), out string? value);
+        return value;
     }
     
     // possible token saving in the future

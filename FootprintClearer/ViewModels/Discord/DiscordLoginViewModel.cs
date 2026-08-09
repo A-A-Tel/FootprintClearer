@@ -1,17 +1,23 @@
 using System;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using FootprintClearer.Services;
 
 namespace FootprintClearer.ViewModels.Discord;
 
-public class DiscordLoginViewModel : PageViewModelBase
+public partial class DiscordLoginViewModel : PageViewModelBase
 {
+    [GeneratedRegex(@"^(mfa\.[\w-]{84}|[\w-]{24,26}\.[\w-]{6}\.[\w-]{25,110})$")]
+    private static partial Regex TokenPattern();
+    
     private readonly ITextFileReader _textFileReader;
+    private readonly ITokenStorage _tokenStorage;
 
-    public DiscordLoginViewModel(ITextFileReader textFileReader)
+    public DiscordLoginViewModel(ITextFileReader textFileReader, ITokenStorage tokenStorage)
     {
         _textFileReader = textFileReader;
+        _tokenStorage = tokenStorage;
     }
 
     public async Task HandlePageLoad(NativeWebView webView)
@@ -22,4 +28,16 @@ public class DiscordLoginViewModel : PageViewModelBase
         await webView.InvokeScript(bridgeScript);
         await webView.InvokeScript(monitorScript);
     }
+
+    public void HandleMessage(string message)
+    {
+        Console.WriteLine("Received: " + message);
+        
+        Regex pattern = TokenPattern();
+        if (!pattern.IsMatch(message)) return;
+        
+        _tokenStorage.StoreToken("discord", message);
+        Console.WriteLine("Validated and stored: " + message);
+    }
+
 }

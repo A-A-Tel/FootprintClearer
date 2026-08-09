@@ -21,7 +21,8 @@ public partial class DiscordLoginView : UserControl
 
     private void WebView_OnWebMessageReceived(object? sender, WebMessageReceivedEventArgs e)
     {
-        Console.WriteLine($"{DateTime.Now} - INCOMING MESSAGE: {e.Body}");
+        if (e.Body is null) return;
+        ViewModel.HandleMessage(e.Body);
     }
 
     private void WebView_OnEnvironmentRequested(object? sender, WebViewEnvironmentRequestedEventArgs e)
