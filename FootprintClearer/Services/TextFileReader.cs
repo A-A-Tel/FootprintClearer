@@ -15,11 +15,11 @@ public interface ITextFileReader
 public class TextFileFileReader : ITextFileReader
 {
     private readonly Dictionary<string, string> _cachedFiles = new();
-    
+
     public string GetFileContents(string assetDir, string fileName)
     {
         string path = Path.Combine(assetDir, fileName);
-        _cachedFiles.TryGetValue(path, out var fileContent);
+        _cachedFiles.TryGetValue(path, out string? fileContent);
 
         return fileContent ?? ReadFile(path);
     }
@@ -27,7 +27,7 @@ public class TextFileFileReader : ITextFileReader
     public async Task<string> GetFileContentsAsync(string assetDir, string fileName)
     {
         string path = Path.Combine(assetDir, fileName);
-        _cachedFiles.TryGetValue(path, out var fileContent);
+        _cachedFiles.TryGetValue(path, out string? fileContent);
 
         return fileContent ?? await ReadFileAsync(path);
     }
@@ -36,7 +36,7 @@ public class TextFileFileReader : ITextFileReader
     {
         string fullPath = Path.Combine("FootprintClearer/Assets/", path);
         Uri uri = new("avares://" + fullPath);
-        
+
         using Stream resource = AssetLoader.Open(uri);
         using StreamReader reader = new(resource);
         string content = reader.ReadToEnd();
@@ -44,7 +44,7 @@ public class TextFileFileReader : ITextFileReader
         _cachedFiles[path] = content;
         return content;
     }
-    
+
     private async Task<string> ReadFileAsync(string path)
     {
         string fullPath = Path.Combine("FootprintClearer/Assets/", path);

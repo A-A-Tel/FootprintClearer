@@ -1,4 +1,3 @@
-using System;
 using Avalonia.Controls;
 using Avalonia.Platform;
 using FootprintClearer.ViewModels.Discord;
@@ -7,12 +6,12 @@ namespace FootprintClearer.Views.Discord;
 
 public partial class DiscordLoginView : UserControl
 {
-    private DiscordLoginViewModel ViewModel => (DataContext as DiscordLoginViewModel)!;
-
     public DiscordLoginView()
     {
         InitializeComponent();
     }
+
+    private DiscordLoginViewModel ViewModel => (DataContext as DiscordLoginViewModel)!;
 
     private async void WebView_OnNavigationStarted(object? sender, WebViewNavigationStartingEventArgs e)
     {

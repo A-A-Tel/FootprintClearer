@@ -16,10 +16,10 @@
             <!-- Fonts -->
             <FontFamily x:Key="PtSansFont">avares://FootprintClearer/Assets/Fonts#Pt Sans Bold Italic</FontFamily>
             <FontFamily x:Key="OpenSansFont">avares://FootprintClearer/Assets/Fonts#Open Sans Regular</FontFamily>
-            
+
             <!-- Brands -->
             <SvgImage x:Key="DiscordBrandIcon" Source="avares://FootprintClearer/Assets/Icons/Brands/Discord.svg" />
-            <SolidColorBrush x:Key="DiscordBrandBrush" Color="#5865f2"/>
+            <SolidColorBrush x:Key="DiscordBrandBrush" Color="#5865f2" />
             <FontFamily x:Key="DiscordBrandFont">avares://FootprintClearer/Assets/Fonts/Brands#ABC Ginto Discord Nord Bold</FontFamily>
 
             <!-- Colors -->

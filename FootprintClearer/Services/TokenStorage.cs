@@ -11,7 +11,7 @@ public interface ITokenStorage
 public class TokenStorage : ITokenStorage
 {
     private readonly Dictionary<string, string> _tokens = new();
-    
+
     public void StoreToken(string key, string token)
     {
         _tokens[key.ToLowerInvariant()] = token;
@@ -22,6 +22,6 @@ public class TokenStorage : ITokenStorage
         _tokens.TryGetValue(key.ToLowerInvariant(), out string? value);
         return value;
     }
-    
+
     // possible token saving in the future
 }

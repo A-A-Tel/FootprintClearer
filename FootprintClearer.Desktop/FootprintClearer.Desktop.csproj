@@ -13,7 +13,7 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia.Desktop"/>
-        <PackageReference Include="AvaloniaUI.DiagnosticsSupport" />
+        <PackageReference Include="AvaloniaUI.DiagnosticsSupport"/>
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     </ItemGroup>
 

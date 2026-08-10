@@ -1,11 +1,4 @@
-﻿using System;
-using Android.App;
-using Android.Content.PM;
-using Android.Runtime;
-using Avalonia;
-using Avalonia.Android;
-
-namespace FootprintClearer.Android;
+﻿namespace FootprintClearer.Android;
 
 [Application]
 public class AndroidApp : AvaloniaAndroidApplication<App>

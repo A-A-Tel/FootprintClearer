@@ -12,11 +12,11 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia"/>
-        <PackageReference Include="Avalonia.Controls.WebView" />
+        <PackageReference Include="Avalonia.Controls.WebView"/>
         <PackageReference Include="Avalonia.Themes.Fluent"/>
         <PackageReference Include="Avalonia.Fonts.Inter"/>
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-        <PackageReference Include="AvaloniaUI.DiagnosticsSupport" />
+        <PackageReference Include="AvaloniaUI.DiagnosticsSupport"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"/>
         <PackageReference Include="ReactiveUI.Avalonia"/>
@@ -25,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\Fonts\Brands\" />
-      <Folder Include="Assets\Icons\Brands\" />
+        <Folder Include="Assets\Fonts\Brands\"/>
+        <Folder Include="Assets\Icons\Brands\"/>
     </ItemGroup>
 </Project>

@@ -14,17 +14,17 @@ public interface INavigator
 public class Navigator : ReactiveObject, INavigator
 {
     private readonly IPageFactory _pageFactory;
-    
-    public PageViewModelBase CurrentPage
-    {
-        get;
-        private set => this.RaiseAndSetIfChanged(ref field, value);
-    }
 
     public Navigator(IPageFactory pageFactory, StartPageViewModel startPage)
     {
         _pageFactory = pageFactory;
         CurrentPage = startPage;
+    }
+
+    public PageViewModelBase CurrentPage
+    {
+        get;
+        private set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public async Task NavigateTo<T>()

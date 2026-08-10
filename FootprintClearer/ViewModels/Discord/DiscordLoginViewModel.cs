@@ -8,9 +8,6 @@ namespace FootprintClearer.ViewModels.Discord;
 
 public partial class DiscordLoginViewModel : PageViewModelBase
 {
-    [GeneratedRegex(@"^(mfa\.[\w-]{84}|[\w-]{24,26}\.[\w-]{6}\.[\w-]{25,110})$")]
-    private static partial Regex TokenPattern();
-    
     private readonly ITextFileReader _textFileReader;
     private readonly ITokenStorage _tokenStorage;
 
@@ -20,11 +17,14 @@ public partial class DiscordLoginViewModel : PageViewModelBase
         _tokenStorage = tokenStorage;
     }
 
+    [GeneratedRegex(@"^(mfa\.[\w-]{84}|[\w-]{24,26}\.[\w-]{6}\.[\w-]{25,110})$")]
+    private static partial Regex TokenPattern();
+
     public async Task HandlePageLoad(NativeWebView webView)
     {
         string bridgeScript = await _textFileReader.GetFileContentsAsync("Scripts", "csBridge.js");
         string monitorScript = await _textFileReader.GetFileContentsAsync("Scripts", "getDiscordToken.js");
-        
+
         await webView.InvokeScript(bridgeScript);
         await webView.InvokeScript(monitorScript);
     }
@@ -32,12 +32,11 @@ public partial class DiscordLoginViewModel : PageViewModelBase
     public void HandleMessage(string message)
     {
         Console.WriteLine("Received: " + message);
-        
+
         Regex pattern = TokenPattern();
         if (!pattern.IsMatch(message)) return;
-        
+
         _tokenStorage.StoreToken("discord", message);
         Console.WriteLine("Validated and stored: " + message);
     }
-
 }
