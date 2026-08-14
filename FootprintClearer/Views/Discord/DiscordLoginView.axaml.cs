@@ -1,3 +1,4 @@
+using System;
 using Avalonia.Controls;
 using Avalonia.Platform;
 using FootprintClearer.ViewModels.Discord;
@@ -21,6 +22,9 @@ public partial class DiscordLoginView : UserControl
     private void WebView_OnWebMessageReceived(object? sender, WebMessageReceivedEventArgs e)
     {
         if (e.Body is null) return;
+
+        Console.WriteLine(e.Body);
+        return;
         ViewModel.HandleMessage(e.Body);
     }
 
