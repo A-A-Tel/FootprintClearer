@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Avalonia.Controls;
 using Avalonia.Platform;
 using FootprintClearer.ViewModels.Discord;
@@ -25,7 +26,6 @@ public partial class DiscordLoginView : UserControl
 
         Console.WriteLine(e.Body);
         return;
-        ViewModel.HandleMessage(e.Body);
     }
 
     private void WebView_OnEnvironmentRequested(object? sender, WebViewEnvironmentRequestedEventArgs e)
@@ -41,8 +41,15 @@ public partial class DiscordLoginView : UserControl
                 args.NonPersistentDataStore = true;
                 break;
             case LinuxWpeWebViewEnvironmentRequestedEventArgs wpeArgs:
-                wpeArgs.DataDirectory = null;
-                wpeArgs.CacheDirectory = null;
+
+                string privateDirectory = Path.Combine(
+                    Path.GetTempPath(),
+                    "footprintclearer",
+                    Guid.NewGuid().ToString("N"));
+                Directory.CreateDirectory(privateDirectory);
+                
+                wpeArgs.DataDirectory = privateDirectory;
+                wpeArgs.CacheDirectory = Path.Combine(privateDirectory, "cache");
                 break;
             case GtkWebViewEnvironmentRequestedEventArgs gtkArgs:
                 gtkArgs.EphemeralDataManager = true;

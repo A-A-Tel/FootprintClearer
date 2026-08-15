@@ -1,26 +1,70 @@
-// make sure the url is included in the request
-const originalXhrOpen = XMLHttpRequest.prototype.open;
-XMLHttpRequest.prototype.open = function (method, url) {
-    this._url = url;
-    return originalXhrOpen.apply(this, arguments);
-};
+function sendToAvalonia(data) {
+    invokeCSharpAction(data);
+}
 
-const originalXhrSend = XMLHttpRequest.prototype.send;
-XMLHttpRequest.prototype.send = function (body) {
-    this.addEventListener("load", () => {
-        const url = this._url ?? "";
+function setUpLogger() {
+    sendToAvalonia("Test");
+    try {
+        const originalXhrOpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function (method, url) {
+            this._url = url;
+            return originalXhrOpen.apply(this, arguments);
+        };
 
-        if (!url.includes("auth")) return;
+        const originalXhrSend = XMLHttpRequest.prototype.send;
+        XMLHttpRequest.prototype.send = function (body) {
+            
+            sendToAvalonia(this.responseText)
+            
+            this.addEventListener("load", () => {
+                const url = this._url ?? "";
 
-        try {
-            const data = JSON.parse(this.responseText);
+                if (!url.includes("auth")) return;
 
-            if (typeof data.token === "string") {
-                sendToAvalonia(data.token);
+                try {
+                    const data = JSON.parse(this.responseText);
+
+                    if (typeof data.token === "string") {
+                        sendToAvalonia(data.token);
+                    }
+                } catch {
+                }
+            });
+
+            return originalXhrSend.apply(this, arguments);
+        };
+        
+        const originalWebSocket = window.WebSocket;
+        const webSocketProxy = function(url, protocols) {
+            let ws;
+            if (arguments.length > 1) {
+                ws = new originalWebSocket(url, protocols);
+            } else {
+                ws = new originalWebSocket(url);
             }
-        } catch {
+            
+            ws.addEventListener('message', (event) => {
+                sendToAvalonia("Incoming:");
+                sendToAvalonia(event.data);
+            })
+            
+            const originalSend = ws.send;
+            ws.send = (data) => {
+                sendToAvalonia("Outgoing:")
+                sendToAvalonia(data)
+                originalSend(data);
+            }
+            
+            return ws;
         }
-    });
+        window.WebSocket = webSocketProxy;
+        window.WebSocket.prototype = webSocketProxy.prototype;
+        window.WebSocket.prototype.constructor = webSocketProxy;
+        
+    } catch (error) {
+        return error.toString();
+    }
+    return "finished";
+}
 
-    return originalXhrSend.apply(this, arguments);
-};
+window.addEventListener("load", setUpLogger)

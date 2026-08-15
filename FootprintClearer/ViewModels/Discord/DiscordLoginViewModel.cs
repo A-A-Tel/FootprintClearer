@@ -22,11 +22,9 @@ public partial class DiscordLoginViewModel : PageViewModelBase
 
     public async Task HandlePageLoad(NativeWebView webView)
     {
-        string bridgeScript = await _textFileReader.GetFileContentsAsync("Scripts", "csBridge.js");
         string monitorScript = await _textFileReader.GetFileContentsAsync("Scripts", "getDiscordToken.js");
 
-        // await webView.InvokeScript(bridgeScript);
-        // await webView.InvokeScript(monitorScript);
+        await webView.InvokeScript(monitorScript);
     }
 
     public void HandleMessage(string message)
